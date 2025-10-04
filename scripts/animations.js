@@ -325,6 +325,8 @@ window.addEventListener('load', createCursorParticles);
 // ==========================================
 console.log('%c🎉 Félicitations ! 🎉', 'font-size: 30px; color: #667eea; font-weight: bold;');
 console.log('%cVous avez ouvert la console ! Vous êtes un vrai développeur ! 💻', 'font-size: 16px; color: #764ba2;');
+
+
 console.log('%cPetit easter egg : Essayez le Konami Code : ↑↑↓↓←→←→BA', 'font-size: 14px; color: #333;');
 // ==========================================
 // 9. ETOILES QUI TOMBENT SUR TOUTE LA PAGE ✨
@@ -372,5 +374,15 @@ function createFallingStarsPage() {
 // Lancer les étoiles dès que la page est chargée
 window.addEventListener('load', () => {
     createFallingStarsPage();
+
+    // Relancer toutes les 3 secondes pour un effet continu
     setInterval(createFallingStarsPage, 3000);
 });
+
+
+console.log('%cPetit easter egg : Essayez le Konami Code : ↑↑↓↓←→←→BA', 'font-size: 14px; color: #333;');
+
+
+    setInterval(createFallingStarsPage, 3000);
+
+
