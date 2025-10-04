@@ -329,60 +329,24 @@ console.log('%cVous avez ouvert la console ! Vous êtes un vrai développeur ! �
 
 console.log('%cPetit easter egg : Essayez le Konami Code : ↑↑↓↓←→←→BA', 'font-size: 14px; color: #333;');
 // ==========================================
-// 9. ETOILES QUI TOMBENT SUR TOUTE LA PAGE ✨
+// AJOUT SIMPLE : MESSAGE DE REMERCIEMENT 🙏
 // ==========================================
-function createFallingStarsPage() {
-    const starCount = 50; // nombre d'étoiles
-    const colors = ['#FFD700', '#FF69B4', '#00FFFF', '#FFA500'];
-
-    for (let i = 0; i < starCount; i++) {
-        const star = document.createElement('div');
-        star.style.position = 'fixed';
-        star.style.width = '6px';
-        star.style.height = '6px';
-        star.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        star.style.borderRadius = '50%';
-        star.style.pointerEvents = 'none';
-        star.style.left = Math.random() * 100 + '%';
-        star.style.top = Math.random() * -50 + 'px';
-        star.style.opacity = '1';
-        star.style.zIndex = '9999';
-        star.style.transform = `rotate(${Math.random() * 360}deg)`;
-
-        document.body.appendChild(star);
-
-        const fallSpeed = 2 + Math.random() * 3;
-        const rotationSpeed = (Math.random() - 0.5) * 10;
-        let position = parseFloat(star.style.top);
-        let rotation = Math.random() * 360;
-
-        const fall = setInterval(() => {
-            position += fallSpeed;
-            rotation += rotationSpeed;
-            star.style.top = position + 'px';
-            star.style.transform = `rotate(${rotation}deg)`;
-            star.style.opacity = 1 - position / window.innerHeight;
-
-            if (position > window.innerHeight) {
-                clearInterval(fall);
-                star.remove();
-            }
-        }, 20);
-    }
-}
-
-// Lancer les étoiles dès que la page est chargée
 window.addEventListener('load', () => {
-    createFallingStarsPage();
-
-    // Relancer toutes les 3 secondes pour un effet continu
-    setInterval(createFallingStarsPage, 3000);
+    const msg = document.createElement('div');
+    msg.textContent = 'Merci d’avoir visité la page !';
+    msg.style.cssText = `
+        position: fixed;
+        bottom: 10px;
+        left: 10px;
+        background: #764ba2;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-weight: bold;
+        z-index: 10001;
+    `;
+    document.body.appendChild(msg);
 });
 
-
-console.log('%cPetit easter egg : Essayez le Konami Code : ↑↑↓↓←→←→BA', 'font-size: 14px; color: #333;');
-
-
-    setInterval(createFallingStarsPage, 3000);
 
 
