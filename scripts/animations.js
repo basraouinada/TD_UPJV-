@@ -375,3 +375,4 @@ window.addEventListener('load', () => {
     // Relancer toutes les 3 secondes pour un effet continu
     setInterval(createFallingStarsPage, 3000);
 });
+
