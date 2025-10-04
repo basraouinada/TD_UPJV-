@@ -298,4 +298,41 @@ body {
     .project-info {
         padding: 2rem;
     }
+    /* Ajout personnel : bordure animée sur la section présentation */
+.presentation-section {
+    border: 3px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+}
+
+.presentation-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    padding: 3px;
+    background: linear-gradient(135deg, #667eea, #764ba2, #a29bfe);
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: borderGlow 3s linear infinite;
+}
+
+@keyframes borderGlow {
+    0% { opacity: 0.4; }
+    50% { opacity: 1; }
+    100% { opacity: 0.4; }
+}
+
+.member-card {
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.member-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px 5px rgba(102, 126, 234, 0.6); 
+}
+
 }
