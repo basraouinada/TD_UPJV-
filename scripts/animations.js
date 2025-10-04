@@ -327,48 +327,51 @@ console.log('%c🎉 Félicitations ! 🎉', 'font-size: 30px; color: #667eea; fo
 console.log('%cVous avez ouvert la console ! Vous êtes un vrai développeur ! 💻', 'font-size: 16px; color: #764ba2;');
 console.log('%cPetit easter egg : Essayez le Konami Code : ↑↑↓↓←→←→BA', 'font-size: 14px; color: #333;');
 // ==========================================
-// 10. ETOILES QUI TOMBENT SUR TOUTE LA PAGE ✨
+// 9. ETOILES QUI TOMBENT SUR TOUTE LA PAGE ✨
 // ==========================================
 function createFallingStarsPage() {
-    const starCount = 50; // Nombre d'étoiles
-    const colors = ['#FFD700', '#FF69B4', '#00FFFF', '#FFFFFF']; // Couleurs des étoiles
+    const starCount = 50; // nombre d'étoiles
+    const colors = ['#FFD700', '#FF69B4', '#00FFFF', '#FFA500'];
 
     for (let i = 0; i < starCount; i++) {
         const star = document.createElement('div');
         star.style.position = 'fixed';
-        star.style.width = (2 + Math.random() * 4) + 'px'; // tailles aléatoires
-        star.style.height = star.style.width;
+        star.style.width = '6px';
+        star.style.height = '6px';
         star.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
         star.style.borderRadius = '50%';
-        star.style.left = Math.random() * window.innerWidth + 'px';
-        star.style.top = -10 + 'px';
-        star.style.opacity = Math.random() * 0.8 + 0.2;
         star.style.pointerEvents = 'none';
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * -50 + 'px';
+        star.style.opacity = '1';
         star.style.zIndex = '9999';
+        star.style.transform = `rotate(${Math.random() * 360}deg)`;
+
         document.body.appendChild(star);
 
-        const fallSpeed = 1 + Math.random() * 3; // vitesse de chute
-        const sway = Math.random() * 2; // léger mouvement horizontal
-        let posY = -10;
-        let posX = parseFloat(star.style.left);
+        const fallSpeed = 2 + Math.random() * 3;
+        const rotationSpeed = (Math.random() - 0.5) * 10;
+        let position = parseFloat(star.style.top);
+        let rotation = Math.random() * 360;
 
         const fall = setInterval(() => {
-            posY += fallSpeed;
-            posX += Math.sin(posY / 30) * sway; // mouvement en zigzag
-            star.style.top = posY + 'px';
-            star.style.left = posX + 'px';
-            
-            if (posY > window.innerHeight) {
+            position += fallSpeed;
+            rotation += rotationSpeed;
+            star.style.top = position + 'px';
+            star.style.transform = `rotate(${rotation}deg)`;
+            star.style.opacity = 1 - position / window.innerHeight;
+
+            if (position > window.innerHeight) {
                 clearInterval(fall);
                 star.remove();
             }
         }, 20);
     }
-
-    // Relancer les étoiles toutes les 500ms pour un effet continu
-    setTimeout(createFallingStarsPage, 500);
 }
 
-// Lancer les étoiles au chargement de la page
-window.addEventListener('load', createFallingStarsPage);
-
+// Lancer les étoiles dès que la page est chargée
+window.addEventListener('load', () => {
+    createFallingStarsPage();
+    // Relancer toutes les 3 secondes pour un effet continu
+    setInterval(createFallingStarsPage, 3000);
+});
