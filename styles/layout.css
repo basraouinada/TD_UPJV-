@@ -345,9 +345,23 @@ body {
     box-shadow: 0 0 20px 5px rgba(102, 126, 234, 0.6);
 }
 
+<<<<<<< HEAD
 .member-card:hover .member-name {
     color: orange;
     transition: color 0.3s ease;
+=======
+/* Effet simple et visible : fond animé sur hover */
+.member-card:hover {
+    background: linear-gradient(135deg, #ff7f50, #ffa500, #ff4500);
+    background-size: 400% 400%;
+    animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+>>>>>>> main
 }
 
 
