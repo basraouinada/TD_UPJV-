@@ -332,6 +332,7 @@ body {
 
 .member-card:hover {
     transform: translateY(-5px);
+
     box-shadow: 0 0 20px 5px rgba(102, 126, 234, 0.6);
 }
 
@@ -339,6 +340,5 @@ body {
     color: orange;
     transition: color 0.3s ease;
 }
-
 
 }
