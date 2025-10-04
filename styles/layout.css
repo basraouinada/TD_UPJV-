@@ -298,4 +298,50 @@ body {
     .project-info {
         padding: 2rem;
     }
+    
+.member-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.member-card::before,
+.member-card::after {
+    content: '✨';
+    position: absolute;
+    font-size: 1rem;
+    opacity: 0;
+    pointer-events: none;
+    animation: confetti 1.5s linear infinite;
+}
+
+.member-card::before {
+    top: -10px;
+    left: 20%;
+}
+
+.member-card::after {
+    top: -10px;
+    left: 70%;
+}
+
+.member-card:hover::before,
+.member-card:hover::after {
+    opacity: 1;
+}
+
+@keyframes confetti {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 1;
+    }
+    50% {
+        transform: translate(-20px, 40px) rotate(180deg);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translate(20px, 80px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
 }
