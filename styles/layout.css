@@ -332,7 +332,23 @@ body {
 
 .member-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 0 20px 5px rgba(102, 126, 234, 0.6); 
+    box-shadow: 0 0 20px 5px rgba(102, 126, 234, 0.6);
 }
+
+/* ---- Effet visible sur les cartes membres ---- */
+.member-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.member-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px 5px rgba(102, 126, 234, 0.6);
+}
+
+.member-card:hover .member-name {
+    color: orange;
+    transition: color 0.3s ease;
+}
+
 
 }
