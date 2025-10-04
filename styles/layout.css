@@ -301,47 +301,33 @@ body {
     
 .member-card {
     position: relative;
-    overflow: hidden;
+    transition: transform 0.3s ease;
 }
 
-.member-card::before,
 .member-card::after {
-    content: '✨';
+    content: '';
     position: absolute;
-    font-size: 1rem;
+    top: -10px;
+    left: -10px;
+    width: calc(100% + 20px);
+    height: calc(100% + 20px);
+    border-radius: 15px;
+    border: 2px solid #ff79c6;
     opacity: 0;
     pointer-events: none;
-    animation: confetti 1.5s linear infinite;
+    transform: scale(1);
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.member-card::before {
-    top: -10px;
-    left: 20%;
-}
-
-.member-card::after {
-    top: -10px;
-    left: 70%;
-}
-
-.member-card:hover::before,
 .member-card:hover::after {
     opacity: 1;
+    transform: scale(1.1);
+    animation: pulse 1s infinite alternate;
 }
 
-@keyframes confetti {
-    0% {
-        transform: translate(0, 0) rotate(0deg);
-        opacity: 1;
-    }
-    50% {
-        transform: translate(-20px, 40px) rotate(180deg);
-        opacity: 0.7;
-    }
-    100% {
-        transform: translate(20px, 80px) rotate(360deg);
-        opacity: 0;
-    }
+@keyframes pulse {
+    0% { transform: scale(1.05); opacity: 0.6; }
+    100% { transform: scale(1.15); opacity: 1; }
 }
 
 }
